@@ -1,4 +1,4 @@
-# テーブル設計
+<!-- # テーブル設計
 
 ## users テーブル
 
@@ -35,4 +35,4 @@
 | Column          | Type       | Options     |
 | --------------- | ---------- | ------------|
 | address         | text       | null: false |
-| user            | references | null: false |
+| user            | references | null: false | -->
