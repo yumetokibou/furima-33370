@@ -4,7 +4,7 @@
 
 | Column           | Type   | Options     |
 | --------         | ------ | ----------- |
-| email            | string | null: false |
+| email            | string | null: false, unique: true|
 |encrypted_password| string | null: false |
 | first_name       | string | null: false |
 | last_name        | string | null: false |
@@ -16,7 +16,7 @@
 ### Association
 - has_many :products
 - has_many :buy_records
-- has_many :address
+
 
 
 
@@ -26,17 +26,17 @@
 | -------------   | ------------| ----------- |
 | products_name   | string      | null: false |
 | user            |references   | null: false |
-| category        | string      | null: false |
-| condition       | string      | null: false |
-| payer           | string      | null: false |
-| prefecture      | string      | null: false |
-| days            | string      | null: false |
-| price           | string      | null: false |
+| category_id     | integer     | null: false |
+| condition_id    | integer     | null: false |
+| payer_id        | integer     | null: false |
+| prefecture_id   | integer     | null: false |
+| day_id          | integer     | null: false |
+| price           | integer     | null: false |
 | products_detail | text        | null: false |
 
 ### Association
 - belongs_to :users
-- has_many   :buy_records
+- has_one   :buy_records
 
 
 ## buy_records テーブル
@@ -44,11 +44,12 @@
 | Column          | Type       | Options                       |
 | --------------- | ---------- | ------------                  |
 | user            | references | null: false, foreign_key: true|
-| products        | references | null: false                   |
+| products        | references | null: false, foreign_key: true|
 
 ### Association
 - belongs_to :users
 - belongs_to :products
+- has_one    :addresses
 
 
 
@@ -56,15 +57,13 @@
 
 | Column          | Type       | Options     |
 | --------------- | ---------- | ------------|
-| creditnumber    | string     | null: false |
-| validity        | string     | null: false | 
-| securitycode    | string     | null: false | 
 | post_number     | string     | null: false |
-| prefecture      | string     | null: false |
+| prefecture      | integer    | null: false |
 | town            | string     | null: false |
 | townnumber      | string     | null: false |
-| building        | string     | null: false |
+| building        | string     |             |
 | phonenumber     | string     | null: false |
 
 ### Association
 - belongs_to :users
+- belongs_to :buy_records
