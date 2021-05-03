@@ -11,7 +11,7 @@
 | first_name_kana  | string | null: false |
 | last_name_kana   | string | null: false |
 | nickname         | string | null: false |
-| birthday         | string | null: false |
+| birthday         | data   | null: false |
 
 ### Association
 - has_many :products
@@ -35,21 +35,21 @@
 | products_detail | text        | null: false |
 
 ### Association
-- belongs_to :users
-- has_one   :buy_records
+- belongs_to :user
+- has_one   :buy_record
 
 
 ## buy_records テーブル
 
-| Column          | Type       | Options                       |
-| --------------- | ---------- | ------------                  |
+| Column          | Type       |Options                      |
+| --------------- | ---------- |------------                 |
 | user            | references | null: false, foreign_key: true|
 | products        | references | null: false, foreign_key: true|
 
 ### Association
-- belongs_to :users
-- belongs_to :products
-- has_one    :addresses
+- belongs_to :user
+- belongs_to :product
+- has_one    :addresse
 
 
 
@@ -63,7 +63,8 @@
 | townnumber      | string     | null: false |
 | building        | string     |             |
 | phonenumber     | string     | null: false |
+| buy_record      | references | null: false, foreign_key: true|
+
 
 ### Association
-- belongs_to :users
-- belongs_to :buy_records
+- belongs_to :buy_record
